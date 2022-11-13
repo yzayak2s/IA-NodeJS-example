@@ -13,7 +13,7 @@ const body = qs.stringify({
     client_secret: 'oauth_secret',
     grant_type: 'password',
     username: 'demouser',
-    password: '*Safb02da42Demos$'
+    password: '*Safb02da42Demo$'
 });
 
 const config = {
@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
         throw Error(res.data.error);
     }
     accessToken = result.data['access_token'];
-    console.log(accessToken);
+    // res.send(accessToken)
 
     const config2 = {
         headers: {
@@ -42,8 +42,8 @@ router.get('/', async (req, res, next) => {
         httpsAgent: httpsAgent, // this was missing (for what is this)?
     };
 
-    const response = await axios.get(`${baseUrl}/api/v1/employee/`, config2);
-    res.send(response)
+    const response = await axios.get(`${baseUrl}/api/v1/employee/search`, config2);
+    res.send(response.data)
 });
 
 module.exports = router;
