@@ -24,6 +24,7 @@ const config = {
     httpsAgent: httpsAgent, // this was missing (for what is this)?
 };
 
+// TODO: Provide another endpoint for bonussalary
 router.get('/', async (req, res, next) => {
 
     const result = await axios.post(`${baseUrl}/oauth/issueToken`, body, config);
